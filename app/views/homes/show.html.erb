@@ -1,0 +1,21 @@
+<h1>Homes</h1>
+<p>This is the apartments page</p>
+
+
+<div>
+
+  <div> <!-- div pictures box -->
+    <div>
+      <p>Pictures goes here</p>
+    </div>
+  </div>
+
+  <div> <!-- div home description -->
+    <h1><%= @home.owner_id %></h1> <!-- name -->
+    <h2><%= @home.owner_id %></h2> <!-- description -->
+  </div>
+
+  <div> <!-- div like button -->
+  <%= link_to 'like button', root_path %> <!-- like button -->
+  </div>
+</div>
