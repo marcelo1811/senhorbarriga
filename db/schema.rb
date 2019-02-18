@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_18_203808) do
+ActiveRecord::Schema.define(version: 2019_02_18_210824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,17 @@ ActiveRecord::Schema.define(version: 2019_02_18_203808) do
     t.integer "bed_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_homes_on_user_id"
+    t.bigint "owner_id"
+    t.index ["owner_id"], name: "index_homes_on_owner_id"
+  end
+
+  create_table "listings", force: :cascade do |t|
+    t.bigint "home_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_id"], name: "index_listings_on_home_id"
+    t.index ["student_id"], name: "index_listings_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,5 +48,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_203808) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "homes", "users"
+  add_foreign_key "homes", "users", column: "owner_id"
+  add_foreign_key "listings", "homes"
+  add_foreign_key "listings", "users", column: "student_id"
 end
