@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  def show
-    @home = Home.find(params[:id])
+  def index
+    @homes = Home.all
   end
 end

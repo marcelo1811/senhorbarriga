@@ -1,0 +1,12 @@
+<h3> home index </h3>
+<% @homes.each do |home| %>
+<p>
+  <%= link_to (home_path(home)) do %>
+    <%= home.address %>
+  <% end %>
+</p>
+<p>
+  <%= home.description %>
+</p>
+--------------------------
+<% end %>
