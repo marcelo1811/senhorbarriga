@@ -1,0 +1,31 @@
+<h1>User Profile</h1>
+<p>This is the user profile/dashboard page</p>
+
+<div>
+  <div> <!-- this is the apartment div -->
+    <p><%= @my_homes.first.title %></p>
+    <p><%= @my_homes.first.address %></p>
+    <p><%= @my_homes.first.description %></p>
+    <p><%= @my_homes.first.bed %></p>
+    <p><%= @my_homes.first.bed_available %></p>
+
+  </div>
+
+  <div> <!-- this is the user info div -->
+    <p><%= @user.email%></p>
+    <p><%= @user.name %></p>
+    <p><%= @user.phone_number %></p>
+    <% @my_homes.each do |home| %>
+    <p><%= home.title %></p>
+    <% end %>
+  </div>
+
+  <div> <!-- this is the matches div -->
+    <p> List of interested users </p>
+  </div>
+
+  <div> <!-- this is the message div -->
+    <p> Message box </p>
+  </div>
+  <p> <%= link_to 'voltar', homes_path   %> </p>
+</div>

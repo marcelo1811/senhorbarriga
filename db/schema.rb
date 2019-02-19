@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(version: 2019_02_19_144114) do
     t.integer "bed_available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.bigint "owner_id"
     t.string "description"
     t.string "title"
     t.index ["owner_id"], name: "index_homes_on_owner_id"
+    t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_144114) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "homes", "users"
   add_foreign_key "homes", "users", column: "owner_id"
   add_foreign_key "listings", "homes"
   add_foreign_key "listings", "users", column: "student_id"
