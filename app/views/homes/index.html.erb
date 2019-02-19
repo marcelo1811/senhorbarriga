@@ -1,5 +1,8 @@
 <h3> home index </h3>
+
+<h2>Meus anúncios</h2>
 <% @homes.each do |home| %>
+  <% if home.owner == current_user %>
   <p>
     <%= link_to (home_path(home)) do %>
     title: <%= home.title %>
@@ -10,4 +13,22 @@
   <p>name: <%= home.owner.name %></p>
   <p>phone: <%= home.owner.phone_number %></p>
 --------------------------
+  <% end %>
 <% end %>
+
+<h2>Outros anúncios</h2>
+<% @homes.each do |home| %>
+  <% if home.owner != current_user %>
+  <p>
+    <%= link_to (home_path(home)) do %>
+    title: <%= home.title %>
+    <% end %>
+  </p>
+  <p>address: <%= home.address %></p>
+  <p>description: <%= home.description %></p>
+  <p>name: <%= home.owner.name %></p>
+  <p>phone: <%= home.owner.phone_number %></p>
+--------------------------
+  <% end %>
+<% end %>
+<p><%= link_to 'Novo anúncio', new_home_path %></p>

@@ -1,16 +1,15 @@
 class HomesController < ApplicationController
+
+  before_action :set_home, only: [:show, :destroy, :edit, :update]
+
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
   end
 
   def show
-    @home = Home.find(params[:id])
-    authorize @home
   end
 
   def destroy
-    @home = Home.find(params[:id])
-    authorize @home
     @home.destroy
     redirect_to homes_path
   end
@@ -33,18 +32,19 @@ class HomesController < ApplicationController
   end
 
   def edit
-    @home = Home.find(params[:id])
-    authorize @home
   end
 
   def update
-    @home = Home.find(params[:id])
-    authorize @home
     @home.update(home_params)
     redirect_to home_path(@home)
   end
 
   private
+
+  def set_home
+    @home = Home.find(params[:id])
+    authorize @home
+  end
 
   def home_params
     params.require(:home).permit(:address, :bed, :description, :title)
