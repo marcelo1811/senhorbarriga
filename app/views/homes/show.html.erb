@@ -18,7 +18,12 @@
   </div>
 
   <div> <!-- div like button -->
-  <%= link_to 'like button', root_path %> <!-- like button -->
+
+
+<%= link_to `like`, home_listings_path(@home),
+      method: :post %>
+
+
   <% if policy(@home).destroy? %>
   <%=  link_to 'delete home', home_path(@home),
     method: :delete,
