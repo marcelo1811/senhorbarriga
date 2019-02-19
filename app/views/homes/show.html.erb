@@ -19,8 +19,16 @@
 
   <div> <!-- div like button -->
   <%= link_to 'like button', root_path %> <!-- like button -->
+  <% if policy(@home).destroy? %>
   <%=  link_to 'delete home', home_path(@home),
     method: :delete,
     data: { confirm: "Are you sure?"} %>
   </div>
+  <% end %>
+
+  <%  if policy(@home).edit? %>
+  <%= link_to 'edit home', edit_home_path(@home) %>
+  <% end %>
+
+  <%= link_to 'voltar', homes_path   %>
 </div>
