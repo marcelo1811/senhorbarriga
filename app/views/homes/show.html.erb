@@ -11,11 +11,14 @@
   </div>
 
   <div> <!-- div home description -->
-    <h1><%= @home.owner_id %></h1> <!-- name -->
-    <h2><%= @home.owner_id %></h2> <!-- description -->
+    <h1><%= @home.owner.name %></h1> <!-- name -->
+    <h2><%= @home.owner.phone_number %></h2> <!-- description -->
   </div>
 
   <div> <!-- div like button -->
   <%= link_to 'like button', root_path %> <!-- like button -->
+  <%=  link_to 'delete home', home_path(@home),
+    method: :delete,
+    data: { confirm: "Are you sure?"} %>
   </div>
 </div>
