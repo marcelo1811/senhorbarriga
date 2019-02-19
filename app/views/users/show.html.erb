@@ -3,7 +3,11 @@
 
 <div>
   <div> <!-- this is the apartment div -->
-    <!-- <p><%= @homes %></p> -->
+    <p><%= @my_homes.first.title %></p>
+    <p><%= @my_homes.first.address %></p>
+    <p><%= @my_homes.first.description %></p>
+    <p><%= @my_homes.first.bed %></p>
+    <p><%= @my_homes.first.bed_available %></p>
 
   </div>
 
@@ -23,5 +27,5 @@
   <div> <!-- this is the message div -->
     <p> Message box </p>
   </div>
-
+  <p> <%= link_to 'voltar', homes_path   %> </p>
 </div>
