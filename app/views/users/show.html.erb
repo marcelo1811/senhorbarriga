@@ -11,6 +11,9 @@
     <p><%= @user.email%></p>
     <p><%= @user.name %></p>
     <p><%= @user.phone_number %></p>
+    <% @my_homes.each do |home| %>
+    <p><%= home.title %></p>
+    <% end %>
   </div>
 
   <div> <!-- this is the matches div -->
