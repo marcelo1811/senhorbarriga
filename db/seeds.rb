@@ -10,8 +10,10 @@ puts "seeding 10 users"
 1.upto(10) do
   User.create(email: Faker::Internet.email,
               password: 'senha123',
-              name: Faker::Name.name,
-              phone_number: Faker::PhoneNumber.phone_number);
+              first_name: Faker::Name.name,
+              last_name: Faker::Name.name,
+              phone_number: Faker::PhoneNumber.phone_number,
+              cpf: 12340000);
 end
 puts "homes seeded"
 
@@ -21,7 +23,10 @@ puts "seeding 10 homes"
   Home.create(address: Faker::Address.street_name,
               owner: User.find(random_id),
               description: Faker::ChuckNorris.fact,
-              title: Faker::Company.name)
+              title: Faker::Company.name,
+              city: Faker::Address.city,
+              price: 1000,
+              cep: 12341234)
 end
 puts "homes seeded"
 
