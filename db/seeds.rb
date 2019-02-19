@@ -17,16 +17,17 @@ puts "homes seeded"
 
 puts "seeding 10 homes"
 1.upto(10) do
-  random_id = 2
+  random_id = rand(1..10)
   Home.create(address: Faker::Address.street_name,
               owner: User.find(random_id),
-              description: Faker::ChuckNorris.fact)
+              description: Faker::ChuckNorris.fact,
+              title: Faker::Company.name)
 end
 puts "homes seeded"
 
 puts "seeding 10 listing"
 1.upto(10) do
-  random_id = 2
+  random_id = rand(1..10)
   Listing.create(home: Home.find(random_id), student: User.find(random_id))
 end
 puts "listing seeded"
