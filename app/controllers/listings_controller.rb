@@ -14,13 +14,12 @@ class ListingsController < ApplicationController
     # student creates a listing by clicking like. The home owner will set like to TRUE when he ALSO likes
     if @home.listing.where(home_id: @home.id, student_id: current_user.id).size.zero?
       @listing.save
-      redirect_to home_path(@home.id)
     else
       listing = Listing.where(home_id: @listing.home_id, student_id: @listing.student_id).first
       listing.student_like = !listing.student_like
       listing.save
-      redirect_to root_path
     end
+    redirect_to request.env["HTTP_REFERER"]
   end
 
   def owner_like

@@ -14,7 +14,8 @@
     <p>email: <%= @user.email%></p>
     <p>name: <%= @user.first_name %></p>
     <p>phone: <%= @user.phone_number %></p>
-    <h2>My listings</h2>
+    <%= link_to 'edit', edit_user_registration_path(@user) %>
+    <h2>My homes</h2>
     <% if policy(current_user).homes_not_zero?(@my_homes) %>
       <% @my_homes.each do |home| %>
       <p><%= home.title %></p>
@@ -34,8 +35,18 @@
     <% end %>
   </div>
 
+  <div>
+    <h2>My likes</h2>
+    <% @my_likes.each do |listing| %>
+    <p><%= listing[:owner].first_name %></p>
+    <%= link_to home_path(listing[:home]) do %>
+      <%= listing[:home].title %>
+    <% end %>
+    ----------------------------
+  <% end %>
+  </div>
   <div> <!-- this is the message div -->
-    <p> Message box </p>
+    <h2>Message box</h2>
   </div>
   <p> <%= link_to 'voltar', homes_path   %> </p>
 </div>
