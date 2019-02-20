@@ -12,7 +12,6 @@ class UsersController < ApplicationController
         @my_listings << { listing: listing, home: home, student: student }
       end
     end
-
     @my_likes = []
     Listing.all.where(student_like: true).each do |listing|
       if (listing.student_id == @user.id)
