@@ -25,7 +25,7 @@
       <%= link_to home_path(listing[:home]) do %>
         <%= listing[:home].title %>
       <% end %>
-      <%= link_to 'like', like_path(listing[:listing]), method: :post %>
+      <%= link_to 'owner_like', owner_like_path(listing[:listing]), method: :post %>
       ----------------------------
     <% end %>
   </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_195748) do
+ActiveRecord::Schema.define(version: 2019_02_20_014844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,8 @@ ActiveRecord::Schema.define(version: 2019_02_19_195748) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "like", default: false
+    t.boolean "student_like", default: true
+    t.boolean "owner_like", default: false
     t.index ["home_id"], name: "index_listings_on_home_id"
     t.index ["student_id"], name: "index_listings_on_student_id"
   end

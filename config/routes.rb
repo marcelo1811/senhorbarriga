@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'users/show'
 
-  post 'like', to: 'listings#like', as: :like
+  post 'owner_like', to: 'listings#owner_like', as: :owner_like
 
   devise_for :users
 

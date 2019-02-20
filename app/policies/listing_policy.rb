@@ -12,7 +12,7 @@ class ListingPolicy < ApplicationPolicy
     true
   end
 
-  def like?
+  def owner_like?
     true
   end
 end

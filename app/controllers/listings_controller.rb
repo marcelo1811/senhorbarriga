@@ -9,7 +9,6 @@ class ListingsController < ApplicationController
     authorize @listing
     @listing.home_id = params[:home_id].to_i
     @listing.student_id = current_user.id
-    @listing.like = false
     @home = Home.find(params[:home_id])
 
     # student creates a listing by clicking like. The home owner will set like to TRUE when he ALSO likes
@@ -17,20 +16,25 @@ class ListingsController < ApplicationController
       @listing.save
       redirect_to home_path(@home.id)
     else
-      @listing.destroy
-      # raise
-      raise
-      redirect_to homes_path
+      listing = Listing.where(home_id: @listing.home_id, student_id: @listing.student_id).first
+      listing.student_like = !listing.student_like
+      listing.save
+      redirect_to root_path
     end
   end
 
-  def like
+  def owner_like
     @listing = Listing.find(params[:format])
     authorize @listing
-    @listing.like = !@listing.like
+    @listing.owner_like = !@listing.owner_like
     @listing.save
     redirect_to root_path
   end
+
+  # def destroy
+  #   @home.destroy
+  #   redirect_to homes_path
+  # end
 
   private
 
