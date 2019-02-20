@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         @my_listings << { listing: listing, home: home, student: student }
         # raise
       else
-        raise
+        #raise
       end
     end
   end
