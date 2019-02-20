@@ -11,24 +11,21 @@
   </div>
 
   <div> <!-- div home description -->
-    <p><%= @home.description %></p> <!-- name -->
-    <p><%= @home.address %></p> <!-- description -->
-    <h1><%= @home.owner.first_name %></h1> <!-- name -->
-    <h2><%= @home.owner.phone_number %></h2> <!-- description -->
+    <p>description: <%= @home.description %></p> <!-- name -->
+    <p>address: <%= @home.address %></p> <!-- description -->
+    <h1>owner: <%= @home.owner.first_name %></h1> <!-- name -->
+    <h2>phone: <%= @home.owner.phone_number %></h2> <!-- description -->
   </div>
 
   <div> <!-- div like button -->
-
-
-<%= link_to `like`, home_listings_path(@home),
+<%= link_to 'student_like', home_listings_path(@home),
       method: :post %>
-
+  </div>
 
   <% if policy(@home).destroy? %>
   <%=  link_to 'delete home', home_path(@home),
     method: :delete,
     data: { confirm: "Are you sure?"} %>
-  </div>
   <% end %>
 
   <%  if policy(@home).edit? %>

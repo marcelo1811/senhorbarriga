@@ -11,4 +11,8 @@ class ListingPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def owner_like?
+    true
+  end
 end

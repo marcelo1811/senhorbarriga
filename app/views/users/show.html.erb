@@ -3,25 +3,31 @@
 
 <div>
   <div> <!-- this is the apartment div -->
-    <p><%= @my_homes.first.title %></p>
-    <p><%= @my_homes.first.address %></p>
-    <p><%= @my_homes.first.description %></p>
-    <p><%= @my_homes.first.bed %></p>
-    <p><%= @my_homes.first.bed_available %></p>
-
+    <p>title: <%= @my_homes.first.title %></p>
+    <p>address: <%= @my_homes.first.address %></p>
+    <p>description: <%= @my_homes.first.description %></p>
   </div>
 
   <div> <!-- this is the user info div -->
-    <p><%= @user.email%></p>
-    <p><%= @user.name %></p>
-    <p><%= @user.phone_number %></p>
+    <p>email: <%= @user.email%></p>
+    <p>name: <%= @user.first_name %></p>
+    <p>phone: <%= @user.phone_number %></p>
+    <h2>My listings</h2>
     <% @my_homes.each do |home| %>
     <p><%= home.title %></p>
     <% end %>
   </div>
 
   <div> <!-- this is the matches div -->
-    <p> List of interested users </p>
+    <h2> List of interested users </h2>
+    <% @my_listings.each do |listing| %>
+      <p><%= listing[:student].first_name %></p>
+      <%= link_to home_path(listing[:home]) do %>
+        <%= listing[:home].title %>
+      <% end %>
+      <%= link_to 'owner_like', owner_like_path(listing[:listing]), method: :post %>
+      ----------------------------
+    <% end %>
   </div>
 
   <div> <!-- this is the message div -->
