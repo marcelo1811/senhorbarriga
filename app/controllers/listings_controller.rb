@@ -27,7 +27,7 @@ class ListingsController < ApplicationController
     authorize @listing
     @listing.owner_like = !@listing.owner_like
     @listing.save
-    redirect_to root_path
+    redirect_to request.env["HTTP_REFERER"]
   end
 
   # def destroy
