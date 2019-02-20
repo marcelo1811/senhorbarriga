@@ -30,8 +30,37 @@
     data: { confirm: "Are you sure?"} %>
     <% end %>
 
+
+
+<div>
+
+  <div> <!-- div pictures box -->
+    <div>
+      <%= cl_image_tag @home.photo, height: 300, width: 400 %>
+    </div>
+  </div>
+
+  <div> <!-- div home description -->
+    <p>description: <%= @home.description %></p> <!-- name -->
+    <p>address: <%= @home.address %></p> <!-- description -->
+    <h1>owner: <%= @home.owner.first_name %></h1> <!-- name -->
+    <h2>phone: <%= @home.owner.phone_number %></h2> <!-- description -->
+  </div>
+
+  <div> <!-- div like button -->
+
+    <% if !policy(@home).is_owner? %>
+    <% if  Listing.where(home_id: @home.id, student_id: current_user.id).first.student_like == true%>
+            <%= link_to 'like', home_listings_path(home_id: @home),
+            method: 'post', :class => 'btn btn-success'%>
+        <% else %>
+            <%= link_to 'dislike', home_listings_path(home_id: @home),
+            method: 'post', :class => 'btn btn-warning'%>
+        <% end %>
+
     <%  if policy(@home).edit? %>
     <%= link_to 'edit home', edit_home_path(@home) %>
+
     <% end %>
     </div>
   </div>

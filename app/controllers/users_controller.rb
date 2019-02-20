@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       if (listing.home.owner_id == @user.id)
         home = Home.find(listing.home_id)
         student = User.find(listing.student_id)
-        @my_listings << { listing: listing, home: home, student: student }
+        @my_listings << { listing: listing, home: home, student: student, owner_like: listing.owner_like }
       end
     end
     @my_likes = []
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       if (listing.student_id == @user.id)
         home = Home.find(listing.home_id)
         owner = User.find(listing.home.owner_id)
-        @my_likes << { listing: listing, home: home, owner: owner }
+        @my_likes << { listing: listing, home: home, owner: owner, owner_like: listing.owner_like }
       end
     end
   end
