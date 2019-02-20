@@ -19,7 +19,9 @@
     <h2>My homes</h2>
     <% if policy(current_user).homes_not_zero?(@my_homes) %>
       <% @my_homes.each do |home| %>
+      <%= link_to home_path(home) do %>
       <p><%= home.title %></p>
+      <% end %>
       <% end %>
     <% end %>
   </div>
