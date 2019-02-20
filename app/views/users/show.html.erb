@@ -12,7 +12,8 @@
 
   <div> <!-- this is the user info div -->
     <p>email: <%= @user.email%></p>
-    <p>name: <%= @user.first_name %></p>
+    <p>name: <%= @user.first_name %>
+      <%= @user.last_name  %></p>
     <p>phone: <%= @user.phone_number %></p>
     <h2>My listings</h2>
     <% if policy(current_user).homes_not_zero?(@my_homes) %>
