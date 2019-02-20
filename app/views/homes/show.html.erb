@@ -18,14 +18,17 @@
   </div>
 
   <div> <!-- div like button -->
-<%= link_to 'student_like', home_listings_path(@home),
-      method: :post %>
+
+    <% if !policy(@home).is_owner? %>
+    <%= link_to 'student_like', home_listings_path(@home),
+    method: :post %>
+    <% end %>
   </div>
 
   <% if policy(@home).destroy? %>
   <%=  link_to 'delete home', home_path(@home),
-    method: :delete,
-    data: { confirm: "Are you sure?"} %>
+  method: :delete,
+  data: { confirm: "Are you sure?"} %>
   <% end %>
 
   <%  if policy(@home).edit? %>
