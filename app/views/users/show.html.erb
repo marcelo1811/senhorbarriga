@@ -3,9 +3,11 @@
 
 <div>
   <div> <!-- this is the apartment div -->
+    <% if policy(current_user).homes_not_zero?(@my_homes) %>
     <p>title: <%= @my_homes.first.title %></p>
     <p>address: <%= @my_homes.first.address %></p>
     <p>description: <%= @my_homes.first.description %></p>
+    <% end %>
   </div>
 
   <div> <!-- this is the user info div -->
@@ -13,8 +15,10 @@
     <p>name: <%= @user.first_name %></p>
     <p>phone: <%= @user.phone_number %></p>
     <h2>My listings</h2>
-    <% @my_homes.each do |home| %>
-    <p><%= home.title %></p>
+    <% if policy(current_user).homes_not_zero?(@my_homes) %>
+      <% @my_homes.each do |home| %>
+      <p><%= home.title %></p>
+      <% end %>
     <% end %>
   </div>
 

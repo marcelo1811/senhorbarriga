@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def homes_not_zero?(my_homes)
+    my_homes.size.positive?
+  end
 end

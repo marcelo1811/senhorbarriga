@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
     @home = Home.find(params[:home_id])
 
     # student creates a listing by clicking like. The home owner will set like to TRUE when he ALSO likes
-    if @home.listing.where(home_id: @home.id).size.zero?
+    if @home.listing.where(home_id: @home.id, student_id: current_user.id).size.zero?
       @listing.save
       redirect_to home_path(@home.id)
     else
