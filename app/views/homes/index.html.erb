@@ -66,8 +66,13 @@
       <p>name: <%= home.owner.first_name %></p>
       <p>phone: <%= home.owner.phone_number %></p>
       <p>
-        <%= link_to 'like', home_listings_path(home_id: home),
-        method: 'post', :class => 'btn btn-success'%>
+        <% if  Listing.where(home_id: home.id, student_id: current_user.id).first.student_like == true%>
+            <%= link_to 'like', home_listings_path(home_id: home),
+            method: 'post', :class => 'btn btn-success'%>
+        <% else %>
+            <%= link_to 'dislike', home_listings_path(home_id: home),
+            method: 'post', :class => 'btn btn-warning'%>
+        <% end %>
       </p>
       --------------------------
       <% end %>

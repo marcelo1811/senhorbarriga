@@ -20,8 +20,13 @@
   <div> <!-- div like button -->
 
     <% if !policy(@home).is_owner? %>
-    <%= link_to 'student_like', home_listings_path(@home),
-    method: :post %>
+    <% if  Listing.where(home_id: @home.id, student_id: current_user.id).first.student_like == true%>
+            <%= link_to 'like', home_listings_path(home_id: @home),
+            method: 'post', :class => 'btn btn-success'%>
+        <% else %>
+            <%= link_to 'dislike', home_listings_path(home_id: @home),
+            method: 'post', :class => 'btn btn-warning'%>
+        <% end %>
     <% end %>
   </div>
 
