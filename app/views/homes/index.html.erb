@@ -1,6 +1,36 @@
-<h3> home index </h3>
+<!--     <H4>missing like button on this page/cards</H4>
+-->
 
-<H4>missing like button on this page/cards</H4>
+<div class="homes-index-wrapper">
+  <div class="homes-index-top-wrapper">
+    <!-- Title -->
+    <div class="homes-title">
+      <h3> home index </h3>
+    </div>
+    <!-- Collapsible button with Owner Listing  -->
+    <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Meu anúncio</button>
+    <!-- Div with Owner Listing  -->
+    <div class="owner-home">
+      <div id="demo" class="collapse">
+      <!-- Owner Listing -->
+      <h2>Meus anúncios</h2>
+      <% @homes.each do |home| %>
+      <% if policy(home).is_owner? %>
+      <p>
+        <%= link_to (home_path(home)) do %>
+        title: <%= home.title %>
+        <% end %>
+      </p>
+      <p>address: <%= home.address %></p>
+      <p>description: <%= home.description %></p>
+      <p>name: <%= home.owner.first_name %></p>
+      <p>phone: <%= home.owner.phone_number %></p>
+      --------------------------
+      <% end %>
+      <% end %>
+      </div>
+    </div>
+
 
 <!-- MAP:-->
 
@@ -32,23 +62,40 @@
 <% end %>
 <p><%= link_to 'Novo anúncio', new_home_path %></p>
 
-<h2>Outros anúncios</h2>
------------------------
-<% @homes.each do |home| %>
-  <% if !policy(home).is_owner? %>
-  <p>
-    <%= link_to (home_path(home)) do %>
-    title: <%= home.title %>
-    <% end %>
-  </p>
-  <p>address: <%= home.address %></p>
-  <p>description: <%= home.description %></p>
-  <p>name: <%= home.owner.first_name %></p>
-  <p>phone: <%= home.owner.phone_number %></p>
-  <p>
-  <%= link_to 'like', home_listings_path(home_id: home),
-      method: 'post' %>
-  </p>
-  --------------------------
-  <% end %>
-<% end %>
+
+    <%= link_to 'Novo anúncio', new_home_path, :class => 'btn btn-primary'%>
+  </div>
+
+  <!-- Middle Wrapper -->
+  <div class="homes-index-middle-wrapper">
+    <!-- Map Div -->
+    <div class="map-wrapper">
+      <img src="../assets/map.png" alt="map">
+    </div>
+
+
+    <!-- List Div -->
+    <div class="list-wrapper">
+      <h2>Outros anúncios</h2>
+      -----------------------
+      <% @homes.each do |home| %>
+      <% if !policy(home).is_owner? %>
+      <p>
+        <%= link_to (home_path(home)) do %>
+        title: <%= home.title %>
+        <% end %>
+      </p>
+      <p>address: <%= home.address %></p>
+      <p>description: <%= home.description %></p>
+      <p>name: <%= home.owner.first_name %></p>
+      <p>phone: <%= home.owner.phone_number %></p>
+      <p>
+        <%= link_to 'like', home_listings_path(home_id: home),
+        method: 'post', :class => 'btn btn-success'%>
+      </p>
+      --------------------------
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
