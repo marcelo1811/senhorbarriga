@@ -10,6 +10,8 @@ class UsersController < ApplicationController
         home = Home.find(listing.home_id)
         student = User.find(listing.student_id)
         @my_listings << { listing: listing, home: home, student: student }
+      end
+    end
 
     @my_likes = []
     Listing.all.where(student_like: true).each do |listing|
