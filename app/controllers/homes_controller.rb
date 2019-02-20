@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_home, only: [:show, :destroy, :edit, :update]
 
   def index
