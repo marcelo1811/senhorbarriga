@@ -21,8 +21,6 @@ class UsersController < ApplicationController
         student = User.find(listing.student_id)
         @my_listings << { listing: listing, home: home, student: student }
         # raise
-      else
-        raise
       end
     end
   end
