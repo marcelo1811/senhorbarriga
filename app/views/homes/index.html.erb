@@ -2,6 +2,19 @@
 
 <H4>missing like button on this page/cards</H4>
 
+<!-- MAP:-->
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
+<!--END MAP-->
+
+
 <h2>Meus anúncios</h2>
 <% @homes.each do |home| %>
   <% if policy(home).is_owner? %>

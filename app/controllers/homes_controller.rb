@@ -4,6 +4,16 @@ class HomesController < ApplicationController
 
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
+
+    @mark_homes = Home.where.not(latitude: nil, longitude: nil)
+
+    @markers = @mark_homes.map do |home|
+      {
+        lng: home.longitude,
+        lat: home.latitude #,
+        #infoWindow: render_to_string(partial: "infowindow", locals: { home: home })
+      }
+    end
   end
 
   def show
