@@ -1,39 +1,40 @@
-<h1>Homes</h1>
+<div class="homes-show-wrapper">
 <p>This is the apartments page</p>
+<p> <%= @home.title %> </p>
 
+  <div class="homes-show-card-wrapper">
+    <div class="homes-show-card">
+      <div> <!-- div pictures box -->
+        <div>
+          <%= cl_image_tag @home.photo, height: 300, width: 400 %>
+        </div>
+      </div>
 
-<div>
+      <div> <!-- div home description -->
+        <p>description: <%= @home.description %></p> <!-- name -->
+        <p>address: <%= @home.address %></p> <!-- description -->
+        <p>owner: <%= @home.owner.first_name %></p> <!-- name -->
+        <p>phone: <%= @home.owner.phone_number %></p> <!-- description -->
+      </div>
 
-  <div> <!-- div pictures box -->
-    <div>
-      <%= cl_image_tag @home.photo, height: 300, width: 400 %>
+      <div> <!-- div like button -->
+
+        <% if !policy(@home).is_owner? %>
+        <%= link_to 'Like', home_listings_path(@home),
+        method: :post, :class => 'btn btn-success' %>
+        <% end %>
+      </div>
+    <% if policy(@home).destroy? %>
+    <%=  link_to 'delete home', home_path(@home),
+    method: :delete,
+    data: { confirm: "Are you sure?"} %>
+    <% end %>
+
+    <%  if policy(@home).edit? %>
+    <%= link_to 'edit home', edit_home_path(@home) %>
+    <% end %>
     </div>
   </div>
 
-  <div> <!-- div home description -->
-    <p>description: <%= @home.description %></p> <!-- name -->
-    <p>address: <%= @home.address %></p> <!-- description -->
-    <h1>owner: <%= @home.owner.first_name %></h1> <!-- name -->
-    <h2>phone: <%= @home.owner.phone_number %></h2> <!-- description -->
-  </div>
-
-  <div> <!-- div like button -->
-
-    <% if !policy(@home).is_owner? %>
-    <%= link_to 'student_like', home_listings_path(@home),
-    method: :post %>
-    <% end %>
-  </div>
-
-  <% if policy(@home).destroy? %>
-  <%=  link_to 'delete home', home_path(@home),
-  method: :delete,
-  data: { confirm: "Are you sure?"} %>
-  <% end %>
-
-  <%  if policy(@home).edit? %>
-  <%= link_to 'edit home', edit_home_path(@home) %>
-  <% end %>
-
-  <%= link_to 'voltar', homes_path   %>
+  <%= link_to 'voltar', homes_path, :class => 'btn btn-primary', :id => 'abc'  %>
 </div>

@@ -1,7 +1,11 @@
 // Specific CSS for your home-page
 
 body {
-
+  background-image: url('/assets/barrigajanelafundo.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
 }
 
 // Upper
@@ -9,7 +13,7 @@ body {
 .upper-wrapper {
   width: 100%;
   margin-top: 20px;
-  background-color: white;
+  background-color: rgba(250,250,250,0.8);
 }
 
 
