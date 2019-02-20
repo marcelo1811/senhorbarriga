@@ -4,7 +4,7 @@
 
 <h2>Meus anúncios</h2>
 <% @homes.each do |home| %>
-  <% if home.owner == current_user %>
+  <% if policy(home).is_owner? %>
   <p>
     <%= link_to (home_path(home)) do %>
     title: <%= home.title %>
@@ -20,7 +20,7 @@
 
 <h2>Outros anúncios</h2>
 <% @homes.each do |home| %>
-  <% if home.owner != current_user %>
+  <% if !policy(home).is_owner? %>
   <p>
     <%= link_to (home_path(home)) do %>
     title: <%= home.title %>

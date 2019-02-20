@@ -28,4 +28,8 @@ class HomePolicy < ApplicationPolicy
   def edit?
     update?
   end
+
+  def is_owner?
+    record.owner == user
+  end
 end
