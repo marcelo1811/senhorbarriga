@@ -1,9 +1,19 @@
 class HomesController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_home, only: [:show, :destroy, :edit, :update]
 
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
+
+    @mark_homes = Home.where.not(latitude: nil, longitude: nil)
+
+    @markers = @mark_homes.map do |home|
+      {
+        lng: home.longitude,
+        lat: home.latitude #,
+        #infoWindow: render_to_string(partial: "infowindow", locals: { home: home })
+      }
+    end
   end
 
   def show
@@ -47,6 +57,6 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:address, :description, :title, :price, :cep, :city)
+    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo)
   end
 end

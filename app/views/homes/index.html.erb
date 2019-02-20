@@ -32,6 +32,37 @@
     </div>
 
 
+<!-- MAP:-->
+
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
+<!--END MAP-->
+
+
+<h2>Meus anúncios</h2>
+<% @homes.each do |home| %>
+  <% if policy(home).is_owner? %>
+  <p>
+    <%= link_to (home_path(home)) do %>
+    title: <%= home.title %>
+    <% end %>
+  </p>
+  <p>address: <%= home.address %></p>
+  <p>description: <%= home.description %></p>
+  <p>name: <%= home.owner.first_name %></p>
+  <p>phone: <%= home.owner.phone_number %></p>
+  --------------------------
+  <% end %>
+<% end %>
+<p><%= link_to 'Novo anúncio', new_home_path %></p>
+
+
     <%= link_to 'Novo anúncio', new_home_path, :class => 'btn btn-primary'%>
   </div>
 
