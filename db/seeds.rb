@@ -33,7 +33,7 @@ puts "homes seeded"
 puts "seeding 10 listing"
 1.upto(10) do
   random_id = rand(1..10)
-  Listing.create(home: Home.find(random_id), student: User.find(random_id))
+  Listing.create(home: Home.find(random_id), student: User.find(random_id), like: false)
 end
 puts "listing seeded"
 

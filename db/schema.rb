@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_195748) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "like"
+    t.boolean "like", default: false
     t.index ["home_id"], name: "index_listings_on_home_id"
     t.index ["student_id"], name: "index_listings_on_student_id"
   end
