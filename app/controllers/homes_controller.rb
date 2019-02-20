@@ -47,6 +47,6 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:address, :description, :title, :price, :cep, :city)
+    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo)
   end
 end
