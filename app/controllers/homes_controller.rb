@@ -17,9 +17,11 @@ class HomesController < ApplicationController
     end
     location = params[:location]
     if location.nil? == false && location != ""
-      lat = Geocoder.search(location).first.boundingbox[0].to_f
-      lng = Geocoder.search(location).first.boundingbox[2].to_f
-      @markers << { lng: lng, lat: lat, home: false }
+      if Geocoder.search(location).first.nil? == false
+        lat = Geocoder.search(location).first.boundingbox[0].to_f
+        lng = Geocoder.search(location).first.boundingbox[2].to_f
+        @markers << { lng: lng, lat: lat, home: false }
+      end
     end
   end
 
