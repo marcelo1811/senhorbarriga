@@ -40,7 +40,20 @@ class HomesController < ApplicationController
       @markers << search if Geocoder.search(location).first.nil? == false
     end
 
-    @mark_homes = @homes if filter?(location, max_dist) == false
+    if filter?(location, max_dist) == false
+      @mark_homes = @homes
+      @markers = @mark_homes.map do |home|
+      {
+        lng: home.longitude,
+        lat: home.latitude,
+        infoWindow: home.address,
+        home_description: home.description,
+        home_link: home_path(home),
+        home: true
+      }
+      end
+    end
+
   end
 
   def show
