@@ -1,9 +1,11 @@
 // All CSS from Users Model
 
-.users-new-wrapper {
+// users#sign_in
+
+.users-signin-wrapper {
 }
 
-.users-new-title {
+.users-signin-title {
   display: flex;
   justify-content: center;
   padding: 20;
@@ -13,12 +15,12 @@
   }
 }
 
-.users-new-login-container {
+.users-signin-login-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.users-new-login {
+.users-signin-login {
   background-color: rgba(255,255,255,0.8);
   width: 50%;
   margin-top: 40px;
@@ -35,9 +37,133 @@
   }
 }
 
-.users-new-forgotpass {
+.users-signin-forgotpass {
   font-size: 14px;
   a {
   color: black;
   }
 }
+
+// end
+// ---------------------------------------------------------------------
+
+// users#sign_up
+
+.users-signup-wrapper {
+}
+
+.users-signup-title {
+    display: flex;
+  justify-content: center;
+  padding: 20;
+  h2 {
+    font-size: 64px;
+    color: white;
+  }
+}
+
+.users-signup-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.users-signup-form {
+  background-color: rgba(255,255,255,0.8);
+  width: 50%;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  padding: 40px;
+  position: relative;
+  input {
+    border-radius: 5px;
+  }
+}
+
+.users-signup-form-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    color: black;
+    position: absolute;
+    right: 40px;
+  }
+}
+
+
+// end
+// ---------------------------------------------------------------------
+
+// user#forgotpassword
+
+.users-signin-forgotpass-title {
+    display: flex;
+  justify-content: center;
+  padding: 20;
+  h2 {
+    font-size: 64px;
+    color: white;
+  }
+}
+
+.users-signin-forgotpass-form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.users-signin-forgotpass-form {
+  background-color: rgba(255,255,255,0.8);
+  min-width: 417px;
+  width: 50%;
+  margin-top: 40px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  padding: 40px;
+  position: relative;
+  input {
+    border-radius: 5px;
+  }
+}
+
+.users-signin-forgotpass-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    color: black;
+    font-size: 14px;
+  }
+  .signup-btn {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+  }
+  .login-btn {
+    position: absolute;
+    right: 115px;
+    bottom: 40px;
+  }
+}
+
+// end
+// ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
