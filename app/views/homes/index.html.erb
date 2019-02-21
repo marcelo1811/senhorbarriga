@@ -41,6 +41,18 @@
   </div>
 
   <!-- Middle Wrapper -->
+<!--   <form action="" id="search-form">
+    <input type="text" id="location">
+    <input type="submit">
+  </form> -->
+
+  <%= form_tag(homes_path, method: :get) do %>
+    <%= text_field_tag :location, params[:location] %>
+    <%= number_field_tag :maxdist, params[:maxdist] %>
+    <%= submit_tag %>
+  <% end %>
+
+
   <div class="homes-index-middle-wrapper">
     <!-- Map Div -->
     <div class="map-wrapper">
