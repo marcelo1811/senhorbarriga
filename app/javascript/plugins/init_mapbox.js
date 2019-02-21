@@ -12,6 +12,11 @@ const buildMap = () => {
 };
 
 
+const addPopUps = (marker) => {
+  const popup = new mapboxgl.Popup().setHTML(`<a href ="${marker.home_link}">` + marker.home_description + '</a>');
+  return popup;
+};
+
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     if (marker.home == false) {
@@ -21,8 +26,10 @@ const addMarkersToMap = (map, markers) => {
       map.flyTo({ center: [ marker.lng, marker.lat ] });
       console.log(marker)
     } else{
+      const popup = addPopUps(marker) // <-- added this
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup) // <-- added this
         .addTo(map);
       map.flyTo({ center: [ marker.lng, marker.lat ] });
       console.log(marker)
