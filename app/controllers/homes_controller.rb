@@ -10,8 +10,10 @@ class HomesController < ApplicationController
     @markers = @mark_homes.map do |home|
       {
         lng: home.longitude,
-        lat: home.latitude #,
-        #infoWindow: render_to_string(partial: "infowindow", locals: { home: home })
+        lat: home.latitude,
+        infoWindow: home.address,
+        home_description: home.description,
+        home_link: home_path(home)
       }
     end
   end

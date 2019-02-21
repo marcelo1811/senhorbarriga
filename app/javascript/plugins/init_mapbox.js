@@ -10,10 +10,17 @@ const buildMap = () => {
   });
 };
 
+const addPopUps = (marker) => {
+  const popup = new mapboxgl.Popup().setHTML(`<a href ="${marker.home_link}">` + marker.home_description + '</a>');
+  return popup;
+};
+
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
+    const popup = addPopUps(marker) // <-- add this
     new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
+      .setPopup(popup) // <-- add this
       .addTo(map);
   });
 };
