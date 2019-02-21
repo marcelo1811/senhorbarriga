@@ -7,9 +7,11 @@
     <div class="homes-title">
       <h3> home index </h3>
     </div>
+    <!-- end title -->
 
     <!-- Collapsible button with Owner Listing  -->
     <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Meu anúncio</button>
+    <!-- end collapsible -->
 
     <!-- Div with Owner Listing  -->
     <div class="owner-home">
@@ -18,7 +20,7 @@
       <!-- Owner Listing -->
       <h2>Meus anúncios</h2>
       <% @homes.each do |home| %>
-        <% if policy(home).is_owner? %>
+        <% if policy(home).owner? %>
         <p>
           <%= link_to (home_path(home)) do %>
           title: <%= home.title %>
@@ -31,9 +33,10 @@
         --------------------------
         <% end %>
       <% end %>
+      <!-- end owner listing -->
       </div>
     </div>
-
+    <!-- end div with owner listing -->
     <%= link_to 'Novo anúncio', new_home_path, :class => 'btn btn-primary'%>
   </div>
 
@@ -49,14 +52,15 @@
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
     </div>
+    <!--END MAP-->
 
 
     <!-- List Div -->
-    <div class="list-wrapper">
+    <div class="list-wrapper" onclick="printID(this.id);">
       <h2>Outros anúncios</h2>
       -----------------------
       <% @homes.each do |home| %>
-      <% if !policy(home).is_owner? %>
+      <% if policy(home).owner? == false %>
         <p>
           <%= link_to (home_path(home)) do %>
           title: <%= home.title %>
@@ -67,17 +71,17 @@
         <p>name: <%= home.owner.first_name %></p>
         <p>phone: <%= home.owner.phone_number %></p>
         <p>
-          <% if Listing.where(home_id: home.id, student_id: current_user.id).first != nil %>
-            <% if  Listing.where(home_id: home.id, student_id: current_user.id).first.student_like == true %>
+          <% if policy(home).logged_in?%>
+            <% if policy(home).liked? == false%>
                 <%= link_to 'like', home_listings_path(home_id: home),
-                method: 'post', :class => 'btn btn-success'%>
+                    method: 'post', :class => 'btn btn-success', :id => home.id, remote: true %>
             <% else %>
-                <%= link_to 'dislike', home_listings_path(home_id: home),
-                method: 'post', :class => 'btn btn-warning'%>
+              <%= link_to 'dislike', home_listings_path(home_id: home),
+                    method: 'post', :class => 'btn btn-warning', :id => home.id, remote: true %>
             <% end %>
           <% else %>
-            <%= link_to 'like', home_listings_path(home_id: home),
-                method: 'post', :class => 'btn btn-success'%>
+              <%= link_to 'like', home_listings_path(home_id: home),
+                  method: 'post', :class => 'btn btn-success'%>
           <% end %>
         </p>
         --------------------------
@@ -86,7 +90,6 @@
     </div>
   </div>
 </div>
-<!-- MAP:-->
 
-
-<!--END MAP-->
+<script>src='index.js.erb' type='text/javascript'</script>
+<script language="javascript">loadIndex()</script>
