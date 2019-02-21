@@ -2,10 +2,28 @@ class HomesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_home, only: [:show, :destroy, :edit, :update]
 
+  def filter?(location, max_dist)
+    return false if location.nil? || location == ""
+
+    return false if max_dist.nil? || max_dist.zero?
+
+    true
+  end
+
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
+    location = params[:location]
+    max_dist = params[:max_dist].to_i
+    if location.nil? == false && location != ""
+      if Geocoder.search(location).first.nil? == false
+        lat = Geocoder.search(location).first.boundingbox[0].to_f
+        lng = Geocoder.search(location).first.boundingbox[2].to_f
+        search = { lng: lng, lat: lat, home: false }
+        search_a = [lat, lng]
+      end
+    end
 
-    @mark_homes = Home.where.not(latitude: nil, longitude: nil)
+    @mark_homes = Home.where.not(latitude: nil, longitude: nil).near(search_a, max_dist)
 
     @markers = @mark_homes.map do |home|
       {
@@ -17,14 +35,12 @@ class HomesController < ApplicationController
         home: true
       }
     end
-    location = params[:location]
+
     if location.nil? == false && location != ""
-      if Geocoder.search(location).first.nil? == false
-        lat = Geocoder.search(location).first.boundingbox[0].to_f
-        lng = Geocoder.search(location).first.boundingbox[2].to_f
-        @markers << { lng: lng, lat: lat, home: false }
-      end
+      @markers << search if Geocoder.search(location).first.nil? == false
     end
+
+    @mark_homes = @homes if filter?(location, max_dist) == false
   end
 
   def show
@@ -68,6 +84,6 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo, :location)
+    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo, :location, :max_dist)
   end
 end

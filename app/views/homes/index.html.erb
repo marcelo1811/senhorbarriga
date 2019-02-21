@@ -41,14 +41,10 @@
   </div>
 
   <!-- Middle Wrapper -->
-<!--   <form action="" id="search-form">
-    <input type="text" id="location">
-    <input type="submit">
-  </form> -->
 
   <%= form_tag(homes_path, method: :get) do %>
     <%= text_field_tag :location, params[:location] %>
-    <%= number_field_tag :maxdist, params[:maxdist] %>
+    <%= number_field_tag :max_dist, params[:max_dist] %>
     <%= submit_tag %>
   <% end %>
 
@@ -71,7 +67,7 @@
     <div class="list-wrapper">
       <h2>Outros anúncios</h2>
       -----------------------
-      <% @homes.each do |home| %>
+      <% @mark_homes.each do |home| %>
       <% if policy(home).owner? == false %>
         <p>
           <%= link_to (home_path(home)) do %>
