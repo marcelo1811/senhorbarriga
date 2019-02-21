@@ -1,5 +1,25 @@
-<h2>Log in</h2>
+<div class="users-new-wrapper">
 
-<%= render "devise/shared/login_form" %>
+  <!-- Title -->
+  <div class="users-new-title">
+    <h2>Log in</h2>
+  </div>
+  <!-- End Title -->
 
-<%= render "devise/shared/links" %>
+  <!-- Login Card -->
+  <div class="users-new-login-container">
+    <div class="users-new-login">
+    <%= render "devise/shared/login_form" %>
+
+    <!-- Forgot Password Links (inside login Card) -->
+    <div class="users-new-forgotpass">
+    <%= render "devise/shared/links" %>
+    </div>
+    <!-- End Forgot Password Links -->
+
+    </div>
+  </div>
+  <!-- End Login Card -->
+
+
+</div>

@@ -10,11 +10,20 @@ class HomesController < ApplicationController
     @markers = @mark_homes.map do |home|
       {
         lng: home.longitude,
-        lat: home.latitude,
+
         infoWindow: home.address,
         home_description: home.description,
-        home_link: home_path(home)
+        home_link: home_path(home),
+        home: true
       }
+    end
+    location = params[:location]
+    if location.nil? == false && location != ""
+      if Geocoder.search(location).first.nil? == false
+        lat = Geocoder.search(location).first.boundingbox[0].to_f
+        lng = Geocoder.search(location).first.boundingbox[2].to_f
+        @markers << { lng: lng, lat: lat, home: false }
+      end
     end
   end
 
@@ -59,6 +68,6 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo)
+    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo, :location)
   end
 end
