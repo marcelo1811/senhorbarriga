@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2019_02_20_172025) do
     t.string "city"
     t.integer "price"
     t.integer "cep"
-    t.string "photo"
     t.float "latitude"
     t.float "longitude"
+    t.string "photo"
     t.index ["owner_id"], name: "index_homes_on_owner_id"
   end
 

@@ -18,30 +18,29 @@
       <%= link_to 'edit', edit_user_registration_path(@user) %>
       <h2>My homes</h2>
       <% if policy(current_user).homes_not_zero?(@my_homes) %>
-      <% @my_homes.each do |home| %>
-      <%= link_to home_path(home) do %>
-      <p><%= home.title %></p>
-      <% end %>
-      <% end %>
+        <% @my_homes.each do |home| %>
+          <%= link_to home_path(home) do %>
+            <p><%= home.title %></p>
+          <% end %>
+        <% end %>
       <% end %>
     </div>
 
     <div> <!-- this is the matches div -->
       <h2> List of interested users </h2>
       <% @my_listings.each do |listing| %>
-      <p><%= listing[:student].first_name %></p>
-      <%= link_to home_path(listing[:home]) do %>
-      <%= listing[:home].title %>
-      <% end %>
-      <% if listing[:owner_like] == true %>
-          <%= link_to 'dislike student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning' %>
-        <% else %>
-          <%= link_to 'like student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success' %>
+          <p><%= listing[:student].first_name %></p>
+        <%= link_to home_path(listing[:home]) do %>
+          <%= listing[:home].title %>
+          <% if listing[:owner_like] == true %>
+              <%= link_to 'dislike student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning' %>
+          <% else %>
+            <%= link_to 'like student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success' %>
+          <% end %>
         <% end %>
-      ----------------------------
+        ----------------------------
       <% end %>
     </div>
-
     <div>
       <h2>My likes</h2>
       <% @my_likes.each do |listing| %>
