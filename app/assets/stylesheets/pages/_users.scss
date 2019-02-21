@@ -1,0 +1,43 @@
+// All CSS from Users Model
+
+.users-new-wrapper {
+}
+
+.users-new-title {
+  display: flex;
+  justify-content: center;
+  padding: 20;
+  h2 {
+    font-size: 64px;
+    color: white;
+  }
+}
+
+.users-new-login-container {
+  display: flex;
+  justify-content: center;
+}
+
+.users-new-login {
+  background-color: rgba(255,255,255,0.8);
+  width: 50%;
+  margin-top: 40px;
+  border-radius: 5px;
+  padding: 40px;
+  position: relative;
+  input {
+    border-radius: 5px;
+  }
+  .btn {
+    position: absolute;
+    right: 40px;
+    bottom: 40px;
+  }
+}
+
+.users-new-forgotpass {
+  font-size: 14px;
+  a {
+  color: black;
+  }
+}
