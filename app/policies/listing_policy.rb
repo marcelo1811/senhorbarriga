@@ -15,4 +15,8 @@ class ListingPolicy < ApplicationPolicy
   def owner_like?
     true
   end
+
+  def liked_as_owner?
+    record.owner_like
+  end
 end

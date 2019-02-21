@@ -29,7 +29,23 @@ class HomePolicy < ApplicationPolicy
     update?
   end
 
-  def is_owner?
+  def owner?
     record.owner == user
+  end
+
+  def logged_in?
+    !user.nil?
+  end
+
+  def listing_with_home?
+    Listing.where(home_id: record.id, student_id: user.id).first != nil
+  end
+
+  def liked?
+    if listing_with_home?
+      Listing.where(home_id: record.id, student_id: user.id).first.student_like == true
+    else
+      false
+    end
   end
 end

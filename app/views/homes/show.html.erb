@@ -1,6 +1,6 @@
 <div class="homes-show-wrapper">
-<p>This is the apartments page</p>
-<p> <%= @home.title %> </p>
+  <p>This is the apartments page</p>
+  <p> <%= @home.title %> </p>
 
   <div class="homes-show-card-wrapper">
     <div class="homes-show-card">
@@ -18,52 +18,39 @@
       </div>
 
       <div> <!-- div like button -->
-
-        <% if !policy(@home).is_owner? %>
-        <%= link_to 'Like', home_listings_path(@home),
-        method: :post, :class => 'btn btn-success' %>
-        <% end %>
+      <% if policy(@home).owner? == false %>
+        <% if policy(@home).logged_in?%>
+            <% if policy(@home).liked? == false%>
+                <%= link_to 'like', home_listings_path(home_id: @home),
+                    method: 'post', :class => 'btn btn-success like-button', :id => @home.id, remote: true %>
+            <% else %>
+              <%= link_to 'dislike', home_listings_path(home_id: @home),
+                    method: 'post', :class => 'btn btn-warning like-button', :id => @home.id, remote: true %>
+            <% end %>
+          <% else %>
+              <%= link_to 'like', home_listings_path(home_id: @home),
+                  method: 'post', :class => 'btn btn-success like-button'%>
+          <% end %>
+      <% end %>
       </div>
-    <% if policy(@home).destroy? %>
-    <%=  link_to 'delete home', home_path(@home),
-    method: :delete,
-    data: { confirm: "Are you sure?"} %>
-    <% end %>
+      <% if policy(@home).destroy? %>
+      <%=  link_to 'delete home', home_path(@home),
+      method: :delete,
+      data: { confirm: "Are you sure?"} %>
+      <% end %>
+      <div>
 
 
 
-<div>
+        <div> <!-- div like button -->
 
-  <div> <!-- div pictures box -->
-    <div>
-      <%= cl_image_tag @home.photo, height: 300, width: 400 %>
+
+          <%  if policy(@home).edit? %>
+          <%= link_to 'edit home', edit_home_path(@home) %>
+          <% end %>
+        </div>
+      </div>
+
     </div>
   </div>
-
-  <div> <!-- div home description -->
-    <p>description: <%= @home.description %></p> <!-- name -->
-    <p>address: <%= @home.address %></p> <!-- description -->
-    <h1>owner: <%= @home.owner.first_name %></h1> <!-- name -->
-    <h2>phone: <%= @home.owner.phone_number %></h2> <!-- description -->
-  </div>
-
-  <div> <!-- div like button -->
-
-    <% if !policy(@home).is_owner? %>
-    <% if  Listing.where(home_id: @home.id, student_id: current_user.id).first.student_like == true%>
-            <%= link_to 'like', home_listings_path(home_id: @home),
-            method: 'post', :class => 'btn btn-success'%>
-        <% else %>
-            <%= link_to 'dislike', home_listings_path(home_id: @home),
-            method: 'post', :class => 'btn btn-warning'%>
-        <% end %>
-
-    <%  if policy(@home).edit? %>
-    <%= link_to 'edit home', edit_home_path(@home) %>
-
-    <% end %>
-    </div>
-  </div>
-
-  <%= link_to 'voltar', homes_path, :class => 'btn btn-primary', :id => 'abc'  %>
-</div>
+      <%= link_to 'voltar', homes_path, :class => 'btn btn-primary', :id => 'abc'  %>
