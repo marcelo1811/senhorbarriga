@@ -1,5 +1,22 @@
-<h3>Edit home</h3>
+<div class="homes-edit-wrapper">
 
-<%= render 'form', home: @home %>
+  <!-- Title -->
+  <div class="homes-edit-title">
+    <h3>Edit Home</h3>
+  </div>
+  <!-- End Title -->
 
-<%= link_to 'Back to home', home_path(@home) %>
+  <!-- Back to Index Button -->
+  <div id="homes-edit-backbutton">
+  <%= link_to 'Back to home', home_path(@home) %>
+  </div>
+  <!-- End Button  -->
+
+  <!-- Form -->
+  <div class="homes-edit-form-container">
+    <div class="homes-edit-form">
+    <%= render 'form', home: @home %>
+    </div>
+  </div>
+  <!-- End Form  -->
+</div>

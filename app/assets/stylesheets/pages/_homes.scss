@@ -1,4 +1,4 @@
-// Homes Model CSS
+// All CSS from Homes Model
 
 
 // homes#index
@@ -50,6 +50,8 @@
   overflow: scroll;
 }
 
+// end
+// ---------------------------------------------------------------------
 // homes#show
 
 .homes-show-wrapper{
@@ -79,21 +81,103 @@
   }
 }
 
+// end
+// ---------------------------------------------------------------------
+// homes#new
+
+.homes-new-title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  h3 {
+    color: white;
+    font-size: 64px;
+  }
+}
 
 
+.homes-new-form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.homes-new-form {
+  padding: 40px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.8);
+  width: 50%;
+  input {
+    border-radius: 5px;
+  }
+  .create-home-button {
+  border-radius: 5px;
+  font-size: 20px;
+  height: 50px;
+  }
+}
+
+.form-bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  input {
+  font-size: 12px;
+  }
+}
+
+#homes-new-backbutton a {
+  text-decoration: none;
+  color: white;
+}
+
+// end
+// ---------------------------------------------------------------------
+// homes#edit
+
+.homes-edit-title {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  h3 {
+    color: white;
+    font-size: 64px;
+  }
+}
+
+.homes-edit-form-container {
+  display: flex;
+  justify-content: center;
+}
 
 
+.homes-edit-form {
+  padding: 40px;
+  margin-bottom: 100px;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.8);
+  width: 50%;
+  input {
+    border-radius: 5px;
+  }
+  .create-home-button {
+  border-radius: 5px;
+  font-size: 20px;
+  height: 50px;
+  }
+}
 
+.form-bottom-buttons {
+  display: flex;
+  justify-content: space-between;
+  input {
+  font-size: 12px;
+  }
+}
 
-
-
-
-
-
-
-
-
-
+#homes-edit-backbutton a {
+  text-decoration: none;
+  color: white;
+}
 
 
 

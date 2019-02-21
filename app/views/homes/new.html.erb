@@ -1,5 +1,22 @@
-<h3>New home</h3>
+<div class="homes-new-wrapper">
 
-<%= render 'form', home: @home %>
+  <!-- Title -->
+  <div class="homes-new-title">
+    <h3>New home</h3>
+  </div>
+  <!-- End Title -->
 
-<%= link_to 'Back to index', homes_path %>
+  <!-- Back to Index Button  -->
+  <div id="homes-new-backbutton">
+  <%= link_to 'Back to index', homes_path %>
+  </div>
+  <!-- End Button -->
+
+  <!-- Form -->
+  <div class="homes-new-form-container">
+    <div class="homes-new-form">
+    <%= render 'form', home: @home %>
+    </div>
+  </div>
+  <!-- End Form -->
+</div>
