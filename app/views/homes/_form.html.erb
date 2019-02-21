@@ -1,3 +1,4 @@
+
 <%= simple_form_for @home do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
@@ -5,7 +6,12 @@
   <%= f.input :cep %>
   <%= f.input :city %>
   <%= f.input :address %>
+
+  <!-- div to align both buttons  -->
+  <div class="form-bottom-buttons">
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit %>
+  <%= f.submit :class => 'create-home-button' %>
+  </div>
+  <!-- end of div -->
 <% end %>
