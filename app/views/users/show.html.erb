@@ -29,13 +29,13 @@
     <div> <!-- this is the matches div -->
       <h2> List of interested users </h2>
       <% @my_listings.each do |listing| %>
-          <p><%= listing[:student].first_name %></p>
+        <p><%= listing[:student].first_name %></p>
         <%= link_to home_path(listing[:home]) do %>
           <%= listing[:home].title %>
-          <% if listing[:owner_like] == true %>
-              <%= link_to 'dislike student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning' %>
+          <% if policy(listing[:listing]).liked_as_owner? %>
+              <%= link_to 'dislike', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning like-button', remote: true %>
           <% else %>
-            <%= link_to 'like student', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success' %>
+            <%= link_to 'like', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success like-button', remote: true %>
           <% end %>
         <% end %>
         ----------------------------
