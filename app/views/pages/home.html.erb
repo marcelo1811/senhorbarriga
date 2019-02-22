@@ -2,105 +2,108 @@
 
 <body>
 
-<!-- Upper Home (Banner + Modal Buttons) -->
+  <!-- Upper Home (Banner + Modal Buttons) -->
 
   <div class="upper-wrapper">
 
-  <!-- Banner  -->
+    <!-- Banner  -->
     <div class="banner">
-      <p>Home (this will be a javascript text animation)</p>
+
+
+      <!-- Animation Home -->
+      <h1>Está
+        <span
+        class="txt-rotate"
+        data-period="2000"
+        data-rotate='[ "procurando um apartamento?", "puscando alguém para morar com você?", "no lugar certo!" ]'></span>
+      </h1>
+      <!-- End Animation Home -->
+
     </div>
 
-  <!-- Modal -->
-
-    <!-- Home modal buttons -->
+    <!-- Home Buttons -->
     <div class="modal-wrapper">
       <div class="modal-buttons">
         <!-- Button trigger modal owner -->
         <%= link_to new_home_path do %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+        <button type="button" class="buttons-home">
           Quero oferecer vagas
         </button>
         <% end %>
         <!-- Button trigger modal user -->
         <%= link_to homes_path do %>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#">
+        <button type="button" class="buttons-home">
           Quero encontrar vagas
         </button>
         <% end %>
       </div>
-
-      <!-- Modal Owner  -->
-      <div class="modal fade" id="ModalOwner" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-
-              <h5 class="modal-title" id="exampleModalLongTitle">Cadastre sua moradia</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-
-            </div>
-            <div class="modal-body">
-             <p>This is where the forms will be displayed</p>
-           </div>
-           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal User -->
-    <div class="modal fade" id="ModalUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-
-            <h5 class="modal-title" id="exampleModalLongTitle">Cadastro do Usuário</h5>
-
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-
-          </div>
-          <div class="modal-body">
-            <p>This is where the forms will be displayed</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>
+<!-- End Home Buttons -->
 
+<!-- Start Bottom Seccion -->
+<div class="bottom-wrapper">
+  <!-- User Testimonials -->
+  <div class="row text-center">
+    <div class="col-sm-6 col-md-4">
+      <div class="testimonial-box">
+        <img src="https://images.pexels.com/photos/206615/pexels-photo-206615.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="" width="90">
+        <div class="ratings-icons">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+        </div>
+        <h4>James Baker</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et</p>
 
-<!-- Bottom Home (Map + List)-->
-  <!-- <div class="bottom-wrapper"> -->
-
-  <!-- Map -->
-<!--     <div class="map-wrapper">
-      <img src="../assets/map.png" alt="map">
-    </div>
- -->
-  <!-- List -->
-<!--     <div class="list-wrapper">
-      <div id="card1">
-        <p>This will be a card</p>
       </div>
-      <div id="card2">
-        <p>This will be a card</p>
-      </div>
+    </div> <!-- End Col -->
 
-    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="testimonial-box">
+        <img src="https://images.pexels.com/photos/478544/pexels-photo-478544.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="" width="90">
+        <div class="ratings-icons">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+        </div>
+        <h4>Jon Doe</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et</p>
+
+      </div>
+    </div> <!-- End Col -->
+
+    <div class="col-sm-6 col-md-4">
+      <div class="testimonial-box">
+        <img src="https://images.pexels.com/photos/478544/pexels-photo-478544.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="" width="90">
+        <div class="ratings-icons">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+        </div>
+        <h4>Maria Jose</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et</p>
+
+      </div>
+    </div> <!-- End Col -->
+    <!-- End User Testimonials -->
+
   </div>
- -->
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="https://mdbootstrap.com/education/bootstrap/"> SenhorBarriga.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- End Footer -->
 </body>
-
-
-
