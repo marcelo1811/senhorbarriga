@@ -45,7 +45,7 @@
       </div>
       <!-- Ends User Likes Title -->
       <% @my_listings.each do |listing| %>
-      <p>The user <strong><%= listing[:student].first_name %></strong>
+      <p>The user <strong><a href="" data-toggle="modal" data-target="#myModal"><%= listing[:student].first_name %></a></strong>
         liked your
       <%= link_to home_path(listing[:home]) do %>
       <%= listing[:home].title %>
@@ -54,8 +54,32 @@
       <% else %>
       <%= link_to 'like', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success like-button', remote: true %>
       <% end %> listing
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= listing[:student].first_name %> <%= listing[:student].last_name %></h4>
+            </div>
+            <div class="modal-body">
+              <%= cl_image_tag listing[:student].photo, height: 300, width: 300, crop: :thumb, gravity: :face %>
+              <p>Some text in the modal.</p>
+              <p><strong>Email: </strong><%= listing[:student].email %></p>
+              <p><strong>Phone: </strong><%= listing[:student].phone_number %></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <% end %>
       <% end %></p>
+
+      <!-- Modal -->
     </div>
     <!-- End User Likes Div -->
 

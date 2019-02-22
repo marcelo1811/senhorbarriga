@@ -14,7 +14,12 @@ const buildMap = () => {
 
 
 const addPopUps = (marker) => {
-  const popup = new mapboxgl.Popup().setHTML(`<a href ="${marker.home_link}">` + marker.home_description + '</a>');
+  const popup = new mapboxgl.Popup()
+                  .setHTML(`<a href ="${marker.home_link}">
+                              <h6>${marker.home_title} - R$${marker.home_price}</h6>
+                              <p>${marker.home_address}</p>
+                              <img src="${marker.home_photo}" alt="No photos" style="width:200px;height:200px;">
+                            </a>`);
   return popup;
 };
 

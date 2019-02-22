@@ -36,7 +36,11 @@ class HomesController < ApplicationController
         lat: home.latitude,
         infoWindow: home.address,
         home_description: home.description,
+        home_address: home.address,
+        home_title: home.title,
         home_link: home_path(home),
+        home_photo: home.photo.url,
+        home_price: home.price,
         home: true
       }
     end
