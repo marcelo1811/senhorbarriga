@@ -66,7 +66,7 @@ homes:
     title: "Vem morar feliz!"
     city: "Sao Paulo"
     price: 654
-    cep: "05435-002"
+    cep: "054315-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550848679/cq2al1xszhvhmuzjefuv.jpg"
   - address: "Avenida Indianopolis 457 Sao Paulo"
     owner_id: 5
@@ -74,5 +74,5 @@ homes:
     title: "Casa Aeroporto!"
     city: "Sao Paulo"
     price: 654
-    cep: "05435-002"
+    cep: "054325-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550856573/syjamubuxpdwysndro3f.jpg"
