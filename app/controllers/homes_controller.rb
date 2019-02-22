@@ -17,6 +17,7 @@ class HomesController < ApplicationController
         home: true
       }
     end
+
     location = params[:location]
     if location.nil? == false && location != ""
       if Geocoder.search(location).first.nil? == false

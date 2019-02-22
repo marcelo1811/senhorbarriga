@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 seeds = YAML.load_file('seeds.yml')
-puts seeds
+
 
 puts 'Creating users...'
 users = {}  # slug => Director
@@ -23,7 +23,7 @@ end
 puts 'Creating homes...'
 homes = {}  # slug => Director
 seeds["homes"].each do |home|
-  homes[home["first_name"]] = Home.create! home.slice(
+  x = Home.create! home.slice(
                               "address",
                               "owner_id",
                               "description",
@@ -31,4 +31,10 @@ seeds["homes"].each do |home|
                               "city",
                               "price",
                               "cep")
+  # x.remote_photo_url = "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
+  a= home.slice("photo")
+  x.remote_photo_url = a["photo".to_s]
+  x.save
+  p x
+  p "------------------------------"
 end
