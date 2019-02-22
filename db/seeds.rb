@@ -12,12 +12,17 @@ seeds = YAML.load_file('seeds.yml')
 puts 'Creating users...'
 users = {}  # slug => Director
 seeds["users"].each do |user|
-  users[user["first_name"]] = User.create! user.slice(
+  x = User.create! user.slice(
                               "first_name",
                                "last_name",
                                "phone_number",
                                "password",
                                "email")
+  a= user.slice("photo")
+  x.remote_photo_url = a["photo".to_s]
+  x.save
+  p x
+  p "------------------------------"
 end
 
 puts 'Creating homes...'

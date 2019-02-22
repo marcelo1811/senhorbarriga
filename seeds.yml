@@ -3,56 +3,61 @@ users:
     password: 123456
     phone_number: 011-912345678
     CPF: 000.000.000.00
-    last_name: Superman
-    first_name: Chuck
+    last_name: Palermo
+    first_name: Alvaro
+    photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550852959/iankdmtsez9llx1xmz3d.jpg"
   - email: "test1@test.com"
     password: 123456
     phone_number: 011-812345678
     CPF: 000.000.000.00
-    last_name: Squarepants
-    first_name: Bob
+    last_name: Riccetti
+    first_name: Ana
+    photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853645/ylkzlxfr4kxfuwpehqgh.jpg"
   - email: "test2@test.com"
     password: 123456
     phone_number: 011-712345678
     CPF: 000.000.000.00
-    last_name: Happy
-    first_name: Vibes
+    last_name: Haisma
+    first_name: Jeroen
+    photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853813/dy0k2eiwiozenxxzlnua.jpg"
   - email: "test3@test.com"
     password: 123456
     phone_number: 011-612345678
     CPF: 000.000.000.00
-    last_name: Pagar
-    first_name: Boris
+    last_name: Miyachi
+    first_name: Marcelo
+    photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550854135/xbpwdb82bxi4plirozvu.jpg"
+
 
 homes:
   - address: "Rua Mourato Coelho 1404 Sao Paulo"
     owner_id: 1
-    description: "Le Wagon São Paulo Coding Bootcamp"
-    title: "Code Code Code"
+    description: "Pequeno apartamento para 20 estudantes"
+    title: "apartamento"
     city: "Sao Paulo"
     price: 850
     cep: "05417-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
   - address: "Rua purpurina 10 Sao Paulo"
     owner_id: 2
-    description: "Best AP in town"
-    title: "Small but nice apartment with 3 individual rooms over a shop"
+    description: "melhor moradia do SP"
+    title: "Pequeno e barato"
     city: "Sao Paulo"
-    price: 400
+    price: 200
     cep: "05415-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
   - address: "Rua Ourania 200 Sao Paulo"
     owner_id: 3
-    description: "Student room to share with 5"
-    title: "Big room for 5 students near Bootcamp"
+    description: "espaco para 5 estudantes"
+    title: "Perto do USP"
     city: "Sao Paulo"
     price: 300
     cep: "05415-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
   - address: "Avenida Pedroso de Morais 888 Sao Paulo"
     owner_id: 4
-    description: "Singe room housing near train station"
-    title: "Close to train station"
+    description: "Casa perto do estacao de metro"
+    title: "Vem morar feliz!"
     city: "Sao Paulo"
     price: 654
     cep: "05435-002"
