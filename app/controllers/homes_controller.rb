@@ -13,9 +13,8 @@ class HomesController < ApplicationController
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
 
-    max_dist = params[:max_dist]
+    max_dist = params[:max_dist].gsub('km', '').to_i
     max_dist = 1_000_000 if max_dist.to_i.zero?
-
     location = params[:location]
 
     if location.nil? || location == ""

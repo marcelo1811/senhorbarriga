@@ -43,9 +43,11 @@
   <!-- Middle Wrapper -->
 
   <%= form_tag(homes_path, method: :get) do %>
+    <%= label_tag 'Local de referência' %>
     <%= text_field_tag :location, params[:location] %>
-    <%= number_field_tag :max_dist, params[:max_dist] %>
-    <%= submit_tag %>
+    <%= label_tag 'Distância máxima' %>
+    <%= select_tag :max_dist, "<option>-</option><option>5km</option><option>10km</option><option>15km</option><option>30km</option>".html_safe %>
+    <%= submit_tag 'Pesquisar' %>
   <% end %>
 
 
