@@ -6,6 +6,7 @@ users:
     last_name: Palermo
     first_name: Alvaro
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550852959/iankdmtsez9llx1xmz3d.jpg"
+    description: "Sou calmo, porem nao gosta de barulho"
   - email: "test1@test.com"
     password: 123456
     phone_number: 011-812345678
@@ -13,6 +14,7 @@ users:
     last_name: Riccetti
     first_name: Ana
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853645/ylkzlxfr4kxfuwpehqgh.jpg"
+    description: "Coffee always ready"
   - email: "test2@test.com"
     password: 123456
     phone_number: 011-712345678
@@ -20,6 +22,7 @@ users:
     last_name: Haisma
     first_name: Jeroen
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853813/dy0k2eiwiozenxxzlnua.jpg"
+    description: "Estresso facil, faco barulho demais"
   - email: "test3@test.com"
     password: 123456
     phone_number: 011-612345678
@@ -27,6 +30,7 @@ users:
     last_name: Miyachi
     first_name: Marcelo
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550854135/xbpwdb82bxi4plirozvu.jpg"
+    description: "Nao deixa Bis perto de mim"
   - email: "test4@test.com"
     password: 123456
     phone_number: 011-612345678
@@ -34,6 +38,7 @@ users:
     last_name: Veenstra
     first_name: Rafael
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550856703/bphdmw7rv2pb8qeuu44t.jpg"
+    description: "Pilotando teclado"
 
 homes:
   - address: "Rua Mourato Coelho 1404 Sao Paulo"
