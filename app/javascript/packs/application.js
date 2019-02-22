@@ -5,3 +5,4 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initLikeButton } from './components/initLikeButton.js';
 initLikeButton();
 initMapbox();
+import { TxtRotate } from './components/typingcar.js';
