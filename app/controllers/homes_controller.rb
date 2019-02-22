@@ -14,12 +14,13 @@ class HomesController < ApplicationController
     @homes = policy_scope(Home).order(created_at: :desc)
 
     max_dist = params[:max_dist]
-    max_dist = 1000000 if max_dist.to_i.zero?
+    max_dist = 1_000_000 if max_dist.to_i.zero?
 
     location = params[:location]
+
     if location.nil? || location == ""
-      lng = request.location.longitude.to_f
       lat = request.location.latitude.to_f
+      lng = request.location.longitude.to_f
     elsif Geocoder.search(location).first.nil? == false
       lat = Geocoder.search(location).first.boundingbox[0].to_f
       lng = Geocoder.search(location).first.boundingbox[2].to_f
@@ -41,25 +42,11 @@ class HomesController < ApplicationController
       }
     end
 
-    if location.nil? == false && location != ""
-      @markers << coordinates_hash if Geocoder.search(location).first.nil? == false
-    else
-      @markers << { lng: request.location.longitude.to_f, lat: request.location.latitude.to_f }
+    if location.nil? || location == ""
+      @markers << { lng: request.location.longitude.to_f, lat: request.location.latitude.to_f, home: false }
+    elsif Geocoder.search(location).first.nil? == false
+      @markers << coordinates_hash
     end
-
-    # if filter?(location, max_dist) == false
-    #   @mark_homes = @homes
-    #   @markers = @mark_homes.map do |home|
-    #   {
-    #     lng: home.longitude,
-    #     lat: home.latitude,
-    #     infoWindow: home.address,
-    #     home_description: home.description,
-    #     home_link: home_path(home),
-    #     home: true
-    #   }
-    #   end
-    # end
   end
 
   def show
