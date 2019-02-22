@@ -54,6 +54,8 @@
       <% else %>
       <%= link_to 'like', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success like-button', remote: true %>
       <% end %> listing
+
+      <!-- student modal -->
       <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
@@ -79,7 +81,7 @@
       <% end %>
       <% end %></p>
 
-      <!-- Modal -->
+      <!-- end student modal -->
     </div>
     <!-- End User Likes Div -->
 
@@ -98,9 +100,35 @@
         <%= listing[:home].title %>
         <% end %>
         <% if listing[:owner_like] == true %>
-        and <strong><%= listing[:home].owner.first_name %></strong> liked you back. It's a <i class="fas fa-heart"></i> match!
+        and <strong><a href="" data-toggle="modal" data-target="#ownerModal"><%= listing[:owner].first_name %></a></strong> liked you back. It's a <i class="fas fa-heart"></i> match!
         <% end %>
       </p>
+
+        <!-- owner modal -->
+        <div id="ownerModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><%= listing[:owner].first_name %> <%= listing[:owner].last_name %></h4>
+              </div>
+              <div class="modal-body">
+                <%= cl_image_tag listing[:owner].photo, height: 300, width: 300, crop: :thumb, gravity: :face %>
+                <p>Some text in the modal.</p>
+                <p><strong>Email: </strong><%= listing[:owner].email %></p>
+                <p><strong>Phone: </strong><%= listing[:owner].phone_number %></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- end owner modal -->
+
       <% end %>
       </div>
     </div>
