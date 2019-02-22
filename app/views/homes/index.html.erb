@@ -79,7 +79,7 @@
 <!--         <div class="homes-index-list-cards-img">
           <img src="<%= home.photo.url %>" alt="" style="width:200px;height:200px;">
         </div> -->
-          <a href="" data-toggle="modal" data-target="#myModal"><%= home.title %></a>
+          <a href="" data-toggle="modal" data-target="#<%= home.owner.first_name %>"><%= home.title %></a>
 
         <li><i class="fas fa-map-marker-alt"></i> <%= home.address %></li>
         <li><i class="fas fa-user"></i> <%= home.owner.first_name %></li>
@@ -101,14 +101,14 @@
           </div>
         </ul>
         <!-- Modal begin -->
-        <div id="myModal" class="modal fade" role="dialog">
+        <div id="<%= home.owner.first_name %>" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><%= home.owner.first_name %> <%= home.owner.last_name %></h4>
+                <h4 class="modal-title"><%= home.title %> <%= home.owner.last_name %></h4>
               </div>
               <div class="modal-body">
                 <%= cl_image_tag home.photo, height: 300, width: 300, crop: :thumb, gravity: :face %>
