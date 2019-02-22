@@ -12,17 +12,21 @@ class HomesController < ApplicationController
 
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
-    location = params[:location]
+
     max_dist = params[:max_dist]
-    max_dist = 1000000 if max_dist.to_i == 0
-    if location.nil? == false && location != ""
-      if Geocoder.search(location).first.nil? == false
-        lat = Geocoder.search(location).first.boundingbox[0].to_f
-        lng = Geocoder.search(location).first.boundingbox[2].to_f
-        coordinates_hash = { lng: lng, lat: lat, home: false }
-        coordinates_array = [lat, lng]
-      end
+    max_dist = 1000000 if max_dist.to_i.zero?
+
+    location = params[:location]
+    if location.nil? || location == ""
+      lng = request.location.longitude.to_f
+      lat = request.location.latitude.to_f
+    elsif Geocoder.search(location).first.nil? == false
+      lat = Geocoder.search(location).first.boundingbox[0].to_f
+      lng = Geocoder.search(location).first.boundingbox[2].to_f
     end
+
+    coordinates_hash = { lng: lng, lat: lat, home: false }
+    coordinates_array = [lat, lng]
 
     @mark_homes = Home.where.not(latitude: nil, longitude: nil).near(coordinates_array, max_dist)
 
