@@ -1,50 +1,63 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-
-   <%= f.input :first_name,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "Bob" } %>
-    <%= f.input :last_name,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "Squarepants" } %>
-    <%= f.input :phone_number,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "1111111111" } %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+<div class="users-edit-wrapper">
+  <!-- Title -->
+  <div class="users-edit-title">
+    <h2>Editar <%= resource_name.to_s.humanize %></h2>
   </div>
+  <!-- End Title -->
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+  <!-- Form -->
+    <div class="users-edit-form-wrapper">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
 
-<h3>Cancel my account</h3>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+              <%= f.input :password,
+                          hint: "leave it blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :current_password,
+                          hint: "we need your current password to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
 
-<%= link_to "Back", :back %>
+             <%= f.input :first_name,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "João" } %>
+              <%= f.input :last_name,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "da Silva" } %>
+              <%= f.input :phone_number,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "11 3333 3333" } %>
+              <%= f.input :description,
+                          required: false,
+                          autofocus: true,
+                          input_html: { autocomplete: "Descreva seu perfil em algumas linhas" } %>
+              <div class="users-edit-photo-buttons">
+              <%= f.input :photo %>
+              <%= f.input :photo_cache, as: :hidden %>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <%= f.button :submit, "Update" %>
+            </div>
+          <% end %>
+    </div>
+    <!-- End Form -->
+<!--   <h3>Cancel my account</h3>
+
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p> -->
+</div>

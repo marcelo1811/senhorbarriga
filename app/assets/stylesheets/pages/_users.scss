@@ -295,3 +295,46 @@
   }
 }
 
+// end
+// ---------------------------------------------------------------------
+
+// users#edit
+
+.users-edit-wrapper {
+  background-image: asset-url('cabinet.jpg');
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  padding-bottom: 48px;
+}
+
+.users-edit-title {
+    display: flex;
+  justify-content: center;
+  padding: 20;
+  h2 {
+    font-size: 64px;
+    color: white;
+  }
+}
+
+.users-edit-form-wrapper {
+  display: flex;
+  justify-content: center;
+  input {
+    border-radius: 5px;
+  }
+  label {
+
+  }
+}
+.users-edit-photo-buttons {
+  input{
+    font-size: 14px;
+  }
+}
+
+
+
