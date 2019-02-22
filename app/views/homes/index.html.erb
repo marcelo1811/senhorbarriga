@@ -10,7 +10,7 @@
     <!-- end title -->
 
     <!-- Collapsible button with Owner Listing  -->
-    <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Meu anúncio</button>
+    <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Meus anúncios</button>
     <!-- end collapsible -->
 
     <!-- Div with Owner Listing  -->
@@ -41,15 +41,13 @@
   </div>
 
   <!-- Middle Wrapper -->
-<!--   <form action="" id="search-form">
-    <input type="text" id="location">
-    <input type="submit">
-  </form> -->
 
   <%= form_tag(homes_path, method: :get) do %>
+    <%= label_tag 'Local de referência' %>
     <%= text_field_tag :location, params[:location] %>
-    <%= number_field_tag :maxdist, params[:maxdist] %>
-    <%= submit_tag %>
+    <%= label_tag 'Distância máxima' %>
+    <%= select_tag :max_dist, "<option>-</option><option>5km</option><option>10km</option><option>15km</option><option>30km</option>".html_safe %>
+    <%= submit_tag 'Pesquisar' %>
   <% end %>
 
 
@@ -71,7 +69,7 @@
     <div class="list-wrapper">
       <h2>Outros anúncios</h2>
       -----------------------
-      <% @homes.each do |home| %>
+      <% @mark_homes.each do |home| %>
       <% if policy(home).owner? == false %>
         <p>
           <%= link_to (home_path(home)) do %>

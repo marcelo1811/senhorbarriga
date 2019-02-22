@@ -2,10 +2,33 @@ class HomesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_home, only: [:show, :destroy, :edit, :update]
 
+  def filter?(location, max_dist)
+    return false if location.nil? || location == ""
+
+    return false if max_dist.nil? || max_dist.zero?
+
+    true
+  end
+
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
 
-    @mark_homes = Home.where.not(latitude: nil, longitude: nil)
+    max_dist = params[:max_dist].to_i
+    max_dist = 1_000_000 if max_dist.to_i.zero?
+    location = params[:location]
+
+    if location.nil? || location == ""
+      lat = request.location.latitude.to_f
+      lng = request.location.longitude.to_f
+    elsif Geocoder.search(location).first.nil? == false
+      lat = Geocoder.search(location).first.boundingbox[0].to_f
+      lng = Geocoder.search(location).first.boundingbox[2].to_f
+    end
+
+    coordinates_hash = { lng: lng, lat: lat, home: false }
+    coordinates_array = [lat, lng]
+
+    @mark_homes = Home.where.not(latitude: nil, longitude: nil).near(coordinates_array, max_dist)
 
     @markers = @mark_homes.map do |home|
       {
@@ -13,18 +36,19 @@ class HomesController < ApplicationController
         lat: home.latitude,
         infoWindow: home.address,
         home_description: home.description,
+        home_address: home.address,
+        home_title: home.title,
         home_link: home_path(home),
+        home_photo: home.photo.url,
+        home_price: home.price,
         home: true
       }
     end
 
-    location = params[:location]
-    if location.nil? == false && location != ""
-      if Geocoder.search(location).first.nil? == false
-        lat = Geocoder.search(location).first.boundingbox[0].to_f
-        lng = Geocoder.search(location).first.boundingbox[2].to_f
-        @markers << { lng: lng, lat: lat, home: false }
-      end
+    if location.nil? || location == ""
+      @markers << { lng: request.location.longitude.to_f, lat: request.location.latitude.to_f, home: false }
+    elsif Geocoder.search(location).first.nil? == false
+      @markers << coordinates_hash
     end
   end
 
@@ -69,6 +93,6 @@ class HomesController < ApplicationController
   end
 
   def home_params
-    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo, :location)
+    params.require(:home).permit(:address, :description, :title, :price, :cep, :city, :photo, :location, :max_dist)
   end
 end

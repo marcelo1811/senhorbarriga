@@ -1,63 +1,109 @@
-<h1>User Profile</h1>
-<p>This is the user profile/dashboard page</p>
 
-<div>
-  <div> <!-- this is the apartment div -->
-    <% if policy(current_user).homes_not_zero?(@my_homes) %>
-    <p>title: <%= @my_homes.first.title %></p>
-    <p>address: <%= @my_homes.first.address %></p>
-    <p>description: <%= @my_homes.first.description %></p>
-    <% end %>
-  </div>
+<div class="users-show-title">
+  <h2>User Profile</h2>
+</div>
 
-  <div> <!-- this is the user info div -->
-    <p>email: <%= @user.email%></p>
-    <p>name: <%= @user.first_name %>
+<div class="container">
+  <!-- User Information Div -->
+  <div class="users-show-info"> <!-- this is the user info div -->
+    <!-- <h4> User Information</h4> -->
+    <p><i class="fas fa-envelope"></i> &nbsp;<%= @user.email%></p>
+    <p><i class="fas fa-user"></i> &nbsp;<%= @user.first_name %>
       <%= @user.last_name  %></p>
-      <p>phone: <%= @user.phone_number %></p>
+      <p><i class="fas fa-phone"></i> &nbsp;<%= @user.phone_number %></p>
       <%= link_to 'edit', edit_user_registration_path(@user) %>
-      <h2>My homes</h2>
-      <% if policy(current_user).homes_not_zero?(@my_homes) %>
-        <% @my_homes.each do |home| %>
-          <%= link_to home_path(home) do %>
-            <p><%= home.title %></p>
-          <% end %>
-        <% end %>
-      <% end %>
     </div>
+    <!-- End User Information Div -->
 
-    <div> <!-- this is the matches div -->
-      <h2> List of interested users </h2>
-      <% @my_listings.each do |listing| %>
-        <p><%= listing[:student].first_name %></p>
-        <%= link_to home_path(listing[:home]) do %>
-          <%= listing[:home].title %>
-          <% if policy(listing[:listing]).liked_as_owner? %>
-              <%= link_to 'dislike', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning like-button', remote: true %>
-          <% else %>
-            <%= link_to 'like', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success like-button', remote: true %>
-          <% end %>
-        <% end %>
-        ----------------------------
+    <!-- User Home Div  -->
+    <div class="users-show-home"> <!-- this is the apartment div -->
+      <!-- User Home Title -->
+      <div class="users-show-home-title">
+        <h4>My home</h4>
+      </div>
+      <!-- Ends User Home Title -->
+      <% if policy(current_user).homes_not_zero?(@my_homes) %>
+      <p><%= @my_homes.first.title %></p>
+      <p><%= @my_homes.first.address %></p>
+      <p><%= @my_homes.first.description %></p>
+      <% end %>
+      <% if policy(current_user).homes_not_zero?(@my_homes) %>
+      <% @my_homes.each do |home| %>
+      <%= link_to home_path(home) do %>
+      <p><%= home.title %></p>
+      <% end %>
+      <% end %>
       <% end %>
     </div>
-    <div>
-      <h2>My likes</h2>
+    <!-- End User Home Div -->
+
+    <!-- User Likes Div -->
+    <div class="users-show-likes"> <!-- this is the likes div -->
+      <!-- User Likes Title  -->
+      <div class="users-show-likes-title">
+        <h3> List of interested users </h3>
+      </div>
+      <!-- Ends User Likes Title -->
+      <% @my_listings.each do |listing| %>
+      <p>The user <strong><a href="" data-toggle="modal" data-target="#myModal"><%= listing[:student].first_name %></a></strong>
+        liked your
+      <%= link_to home_path(listing[:home]) do %>
+      <%= listing[:home].title %>
+      <% if policy(listing[:listing]).liked_as_owner? %>
+      <%= link_to 'dislike', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-warning like-button', remote: true %>
+      <% else %>
+      <%= link_to 'like', owner_like_path(listing[:listing]), method: :post, :class => 'btn btn-success like-button', remote: true %>
+      <% end %> listing
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"><%= listing[:student].first_name %> <%= listing[:student].last_name %></h4>
+            </div>
+            <div class="modal-body">
+              <%= cl_image_tag listing[:student].photo, height: 300, width: 300, crop: :thumb, gravity: :face %>
+              <p>Some text in the modal.</p>
+              <p><strong>Email: </strong><%= listing[:student].email %></p>
+              <p><strong>Phone: </strong><%= listing[:student].phone_number %></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <% end %>
+      <% end %></p>
+
+      <!-- Modal -->
+    </div>
+    <!-- End User Likes Div -->
+
+
+    <!-- User Matches Div -->
+    <div class="users-shows-match">
+      <!-- User Matches Title -->
+      <div class="users-show-match-title">
+        <h3>My likes</h3>
+      </div>
+      <!-- Ends User Matches Title -->
       <% @my_likes.each do |listing| %>
-      <p>
+      <div class="users-show-match-card">
+      <p> You liked
         <%= link_to home_path(listing[:home]) do %>
-          <%= listing[:home].title %>
+        <%= listing[:home].title %>
         <% end %>
-        -------
         <% if listing[:owner_like] == true %>
-          match! with <%= listing[:home].owner.first_name %>
+        and <strong><%= listing[:home].owner.first_name %></strong> liked you back. It's a <i class="fas fa-heart"></i> match!
         <% end %>
       </p>
       <% end %>
-      ----------------
+      </div>
     </div>
-    <div> <!-- this is the message div -->
-      <h2>Message box</h2>
-    </div>
-    <p> <%= link_to 'voltar', homes_path   %> </p>
+    <!-- End User Matches Div -->
+
   </div>

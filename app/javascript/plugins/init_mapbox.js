@@ -7,33 +7,37 @@ const buildMap = () => {
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
-    zoom: 12
+    zoom: 12,
+    center: [-46.741735, -23.55762]
   });
 };
 
 
 const addPopUps = (marker) => {
-  const popup = new mapboxgl.Popup().setHTML(`<a href ="${marker.home_link}">` + marker.home_description + '</a>');
+  const popup = new mapboxgl.Popup()
+                  .setHTML(`<a href ="${marker.home_link}">
+                              <h6>${marker.home_title} - R$${marker.home_price}</h6>
+                              <p>${marker.home_address}</p>
+                              <img src="${marker.home_photo}" alt="No photos" style="width:200px;height:200px;">
+                            </a>`);
   return popup;
 };
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
       console.log(marker)
-    if (marker.home == false) {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
-      map.flyTo({ center: [ marker.lng, marker.lat ] });
-      console.log(marker)
-    } else{
+    if (marker.home) {
       const popup = addPopUps(marker) // <-- added this
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup) // <-- added this
         .addTo(map);
       map.flyTo({ center: [ marker.lng, marker.lat ] });
-      console.log(marker)
+    } else{
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+      map.flyTo({ center: [ marker.lng, marker.lat ] });
     }
   });
 };
@@ -43,6 +47,19 @@ const fitMapToMarkers = (map, markers) => {
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
 };
+
+
+const initMapbox = () => {
+
+  if (mapElement) {
+    const map = buildMap();
+    // initSearchForm(map);
+    const markers = JSON.parse(mapElement.dataset.markers);
+    addMarkersToMap(map, markers);
+  }
+};
+
+export { initMapbox };
 
 // const AddSearchMarker = (map, marker) => {
 //   new mapboxgl.Marker()
@@ -71,15 +88,3 @@ const fitMapToMarkers = (map, markers) => {
 //       });
 //    }
 //   };
-
-const initMapbox = () => {
-
-  if (mapElement) {
-    const map = buildMap();
-    // initSearchForm(map);
-    const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
-  }
-};
-
-export { initMapbox };
