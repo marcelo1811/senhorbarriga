@@ -25,8 +25,10 @@ const addPopUps = (marker) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-      console.log(marker)
+    console.log(marker)
     if (marker.home) {
+      const mark = document.createElement('div');
+      mark.className = 'marker';
       const popup = addPopUps(marker) // <-- added this
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
