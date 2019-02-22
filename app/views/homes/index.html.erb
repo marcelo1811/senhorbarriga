@@ -78,9 +78,7 @@
 <!--         <div class="homes-index-list-cards-img">
           <img src="<%= home.photo.url %>" alt="" style="width:200px;height:200px;">
         </div> -->
-          <%= link_to (home_path(home)) do %>
-          <%= home.title %>
-          <% end %>
+          <a href="" data-toggle="modal" data-target="#myModal"><%= home.title %></a>
 
         <li><i class="fas fa-map-marker-alt"></i> <%= home.address %></li>
         <li><i class="fas fa-user"></i> <%= home.owner.first_name %></li>
@@ -101,6 +99,32 @@
           <% end %>
           </div>
         </ul>
+        <!-- Modal begin -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><%= home.owner.first_name %> <%= home.owner.last_name %></h4>
+              </div>
+              <div class="modal-body">
+                <%= cl_image_tag home.photo, height: 300, width: 300, crop: :thumb, gravity: :face %>
+
+                <li><i class="fas fa-map-marker-alt"></i> <%= home.address %></li>
+                <li><i class="fas fa-user"></i> <%= home.owner.first_name %></li>
+                <li><i class="fas fa-building"></i> <%= home.description %></li>
+                <li><i class="fas fa-coins"></i> R$<%= home.price %>/mês</li>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- Modal end -->
 
         <% end %>
       <% end %>
