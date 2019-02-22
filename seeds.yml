@@ -27,7 +27,13 @@ users:
     last_name: Miyachi
     first_name: Marcelo
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550854135/xbpwdb82bxi4plirozvu.jpg"
-
+  - email: "test4@test.com"
+    password: 123456
+    phone_number: 011-612345678
+    CPF: 000.000.000.00
+    last_name: Veenstra
+    first_name: Rafael
+    photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550856703/bphdmw7rv2pb8qeuu44t.jpg"
 
 homes:
   - address: "Rua Mourato Coelho 1404 Sao Paulo"
@@ -45,7 +51,7 @@ homes:
     city: "Sao Paulo"
     price: 200
     cep: "05415-002"
-    photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
+    photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550857127/ldcbbxl9n7zvwcdkpen3.jpg"
   - address: "Rua Ourania 200 Sao Paulo"
     owner_id: 3
     description: "espaco para 5 estudantes"
@@ -53,7 +59,7 @@ homes:
     city: "Sao Paulo"
     price: 300
     cep: "05415-002"
-    photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
+    photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550857160/oktmolavy25x4vogcx8n.jpg"
   - address: "Avenida Pedroso de Morais 888 Sao Paulo"
     owner_id: 4
     description: "Casa perto do estacao de metro"
@@ -62,4 +68,11 @@ homes:
     price: 654
     cep: "05435-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550848679/cq2al1xszhvhmuzjefuv.jpg"
-
+  - address: "Avenida Indianopolis 457 Sao Paulo"
+    owner_id: 5
+    description: "Casa a 5 minutos do Aeroporto"
+    title: "Casa Aeroporto!"
+    city: "Sao Paulo"
+    price: 654
+    cep: "05435-002"
+    photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550856573/syjamubuxpdwysndro3f.jpg"
