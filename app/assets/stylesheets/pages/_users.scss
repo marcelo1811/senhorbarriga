@@ -114,6 +114,16 @@
 
 // users#forgotpassword
 
+.users-signin-forgotpass-wrapper {
+  background-image: asset-url('cabinet.jpg');
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  min-height: 800px;
+}
+
 .users-signin-forgotpass-title {
     display: flex;
   justify-content: center;
