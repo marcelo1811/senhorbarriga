@@ -25,7 +25,7 @@ const addPopUps = (marker) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-      console.log(marker)
+    console.log(marker)
     if (marker.home) {
       const popup = addPopUps(marker) // <-- added this
       new mapboxgl.Marker()
@@ -34,7 +34,7 @@ const addMarkersToMap = (map, markers) => {
         .addTo(map);
       map.flyTo({ center: [ marker.lng, marker.lat ] });
     } else{
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: 'red'})
         .setLngLat([ marker.lng, marker.lat ])
         .addTo(map);
       map.flyTo({ center: [ marker.lng, marker.lat ] });
