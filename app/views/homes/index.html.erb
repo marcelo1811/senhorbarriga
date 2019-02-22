@@ -46,10 +46,11 @@
     <%= label_tag 'Local de referência' %>
     <%= text_field_tag :location, params[:location] %>
     <%= label_tag 'Distância máxima' %>
-    <%= select_tag :max_dist, "<option>-</option><option>5km</option><option>10km</option><option>15km</option><option>30km</option>".html_safe %>
+
+    <%= select_tag :max_dist, options_for_select([ ["-", "-"],["5km","5km"], ["10km", "10km"], ["15km", "15km"], ["30km", "30km"]], params[:max_dist])  %>
     <%= submit_tag 'Pesquisar' %>
   <% end %>
-
+<!-- "<option>-</option><option>5km</option><option>10km</option><option>15km</option><option>30km</option>".html_safe -->
 
   <div class="homes-index-middle-wrapper">
     <!-- Map Div -->
