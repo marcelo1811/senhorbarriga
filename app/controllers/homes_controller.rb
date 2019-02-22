@@ -13,8 +13,8 @@ class HomesController < ApplicationController
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
     location = params[:location]
-    max_dist = params[:max_dist].to_i
-    max_dist = 1000000 if max_dist = 0
+    max_dist = params[:max_dist]
+    max_dist = 1000000 if max_dist.to_i == 0
     if location.nil? == false && location != ""
       if Geocoder.search(location).first.nil? == false
         lat = Geocoder.search(location).first.boundingbox[0].to_f
