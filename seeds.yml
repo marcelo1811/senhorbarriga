@@ -1,5 +1,5 @@
 users:
-  - email: "test@test.com"
+  - email: "Alvaro@test.com"
     password: 123456
     phone_number: 011-912345678
     CPF: 000.000.000.00
@@ -7,7 +7,7 @@ users:
     first_name: Alvaro
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550852959/iankdmtsez9llx1xmz3d.jpg"
     description: "Sou calmo, porem nao gosta de barulho"
-  - email: "test1@test.com"
+  - email: "Ana@test.com"
     password: 123456
     phone_number: 011-812345678
     CPF: 000.000.000.00
@@ -15,7 +15,7 @@ users:
     first_name: Ana
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853645/ylkzlxfr4kxfuwpehqgh.jpg"
     description: "Coffee always ready"
-  - email: "test2@test.com"
+  - email: "Jeroen@test.com"
     password: 123456
     phone_number: 011-712345678
     CPF: 000.000.000.00
@@ -23,7 +23,7 @@ users:
     first_name: Jeroen
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550853813/dy0k2eiwiozenxxzlnua.jpg"
     description: "Estresso facil, faco barulho demais"
-  - email: "test3@test.com"
+  - email: "Marcelo@test.com"
     password: 123456
     phone_number: 011-612345678
     CPF: 000.000.000.00
@@ -31,7 +31,7 @@ users:
     first_name: Marcelo
     photo : "http://res.cloudinary.com/dpkbckolo/image/upload/v1550854135/xbpwdb82bxi4plirozvu.jpg"
     description: "Nao deixa Bis perto de mim"
-  - email: "test4@test.com"
+  - email: "Rafael@test.com"
     password: 123456
     phone_number: 011-612345678
     CPF: 000.000.000.00
@@ -47,7 +47,7 @@ homes:
     title: "apartamento"
     city: "Sao Paulo"
     price: 850
-    cep: "05417-002"
+    cep: "054147-002"
     photo: "http://res.cloudinary.com/dpkbckolo/image/upload/v1550847678/zgchnp4dlgst2hglh8go.jpg"
   - address: "Rua purpurina 10 Sao Paulo"
     owner_id: 2
