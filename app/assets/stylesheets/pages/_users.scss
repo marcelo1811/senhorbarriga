@@ -3,6 +3,13 @@
 // users#sign_in
 
 .users-signin-wrapper {
+  background-image: asset-url('cabinet.jpg');
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  min-height: 800px;
 }
 
 .users-signin-title {
@@ -50,6 +57,13 @@
 // users#sign_up
 
 .users-signup-wrapper {
+  background-image: asset-url('cabinet.jpg');
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  min-height: 800px;
 }
 
 .users-signup-title {
@@ -86,9 +100,11 @@
   justify-content: space-between;
   align-items: center;
   a {
+    font-size: 16px;
     color: black;
     position: absolute;
-    right: 40px;
+    right: 48px;
+    bottom: 40px;
   }
 }
 
