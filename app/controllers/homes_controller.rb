@@ -2,14 +2,6 @@ class HomesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_home, only: [:show, :destroy, :edit, :update]
 
-  def filter?(location, max_dist)
-    return false if location.nil? || location == ""
-
-    return false if max_dist.nil? || max_dist.zero?
-
-    true
-  end
-
   def index
     @homes = policy_scope(Home).order(created_at: :desc)
 
@@ -68,6 +60,7 @@ class HomesController < ApplicationController
   def create
     @home = Home.new(home_params)
     authorize @home
+    @home.address = "#{@home.address} - #{@home.city}"
     @home.owner = current_user
     if @home.valid?
       @home.save
